@@ -211,4 +211,100 @@ function fizzBuzz7(n: number): string[] {
     });
     return stringArray;
 }
-//
+
+
+let list1: number[] = [1,2,3,4];
+let list2: number[] = [1,3,4];
+
+function combinedList(list1, list2): number[]{
+    let combined: number[] = [];
+    for(let i in list1){
+        for(let x in list2){
+    }
+    return combined;
+}
+
+abstract class Car{
+    wheels: number;
+    pax: number;
+    cargo: number;
+    weight: number;
+
+    constructor(wheels: number, pax: number, cargo: number, weight: number){
+        this.wheels = wheels;
+        this.pax = pax;
+        this.cargo = cargo;
+        this.weight = weight;
+    }
+
+    public drive(): void{
+        console.log("Driving");
+    }
+    public stop(): void{
+        console.log("Stopping");
+    }
+    public park(): void{
+        console.log("Parking");
+    }
+    private refuel(): void{
+        console.log("Refueling");
+    }
+}
+
+class Truck extends Car{
+    trailer: number;
+    load: number;
+    fuelType: boolean;
+    range: number;
+    
+    constructor(wheels: number, pax: number, cargo: number, weight: number, trailer: number, load: number, fuelType: boolean, range: number){
+        super(wheels, pax, cargo, weight);
+        this.trailer = trailer;
+        this.load = load;
+        this.fuelType = fuelType;
+        this.range = range;
+    }
+
+    override drive(): void{
+        console.log("Truck is driving");
+    }   
+}
+
+class Sedan extends Car{
+    fuelType: boolean;
+    range: number;
+
+    constructor(wheels: number, pax: number, cargo: number, weight: number, fuelType: boolean, range: number){
+        super(wheels, pax, cargo, weight);
+        this.fuelType = fuelType;
+        this.range = range;
+    }
+}
+
+
+let sedan: Sedan = new Sedan(4, 5, 2, 2000, true, 500);
+sedan.wheels = 3;
+
+sedan.drive();
+sedan.stop();
+sedan.park();
+
+
+let car: Car = (sedan as Car);
+
+let truck: Truck = (sedan as Truck);
+truck.drive();
+
+//generics
+function echo<T>(arg: T): T{
+    return arg;
+}
+
+let result: string = echo<string>("Hello");
+let result2: number = echo<number>(10);
+let result3: boolean = echo<boolean>(true);
+let result4: Sedan = echo<Sedan>(new Sedan(4, 5, 2, 2000, true, 500));
+let invalidType: number = echo<number>(Number.parseInt("2"));
+let stringResult: string = echo<string>((10).toString());
+
+};
